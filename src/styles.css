@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+
+button.primary {
+  padding: 10px;
+  color: white;
+  border-radius: 8px;
+  
+}
+
+.button:hover {opacity: 0.6}
+
+i {
+  color: rgb(107, 114, 114);
+}
