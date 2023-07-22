@@ -1,5 +1,5 @@
 .listing-photo {
-    height: 400px;
+    height: 350px;
     width: 70%;
     object-fit: cover;
     border-radius: 30px;
@@ -8,7 +8,6 @@
    padding: 10px;
     
   }
-  
   .listing-apply{
     margin-left: 240px;
   }
@@ -16,27 +15,34 @@
   .listing-heading {
     font-size: 25pt;
     font-weight: 200;
-    margin-left: 480px;
+    margin-left: 800px;
     
   }
 
   .listing-location {
     font-size: 15pt;
-    margin-bottom: 70px;
-    margin-left: 550px
-   
+    margin-left: 900px
   }
   
   .listing-features > .section-heading {
     color: darkslategrey;
     font-size: 20pt;
-    margin-bottom: 15px;
   }
   
   .listing-features {
     margin-left: 20px;
-   
     font-size: 14;
+  }
+
+  .listing{
+    position: relative;
+    margin-left: 270px;
+    font-size: medium;
+    color:rgb(117, 117, 117);
+
+
+
+
   }
 
   p {
@@ -57,9 +63,9 @@
   
   ul{
   margin-left: 100px;
-  margin-bottom: 50px;
+  
   flex-wrap: wrap;
-  padding: 10px;
+  padding: 20px;
   }
 
   li {
@@ -75,7 +81,6 @@
     font-size: 12pt;
   }
   input {
-    
     font-size: 10pt;
     padding: 10px;
     width: 100px;
@@ -93,11 +98,14 @@
  button{
   margin: 15px;
   font-size: 15px;
-  padding: 15apx;
+  padding: 15px;
   border: rgb(160, 175, 160);
   background: darkslategrey;
   border-radius: 30px;
   width: 150px;
  }
 
+ button:hover {
+  background-color: rgb(64, 109, 109);
+}
 

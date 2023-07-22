@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housinglocation';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-details',
@@ -14,14 +16,16 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   <article>
     
   <img class="listing-photo" [src]="housingLocation?.photo"  alt="Exterior photo of {{housingLocation?.name}}"/>
+  <h4 class="listing">{{housingLocation?.price}}</h4>
    
   <section class="listing-description">
       <h4 class="listing-heading">{{housingLocation?.name}}</h4>
       <p class="listing-location" > <i class="fa-solid fa-location-dot"></i>{{housingLocation?.city}}, {{housingLocation?.state}} </p>
     </section>
 
+
     <section class="listing-features">
-      <h6 class="section-heading">About this housing location</h6>
+      <h6 class="section-heading">About this housing location</h6> 
       <p class="listing-description">{{housingLocation?.description}}</p>
     </section>
 
@@ -46,17 +50,21 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
       
     <section class="listing-apply">
-     
-      <form [formGroup]="applyForm" (submit)="submitApplication()">
       
+    <form [formGroup]="applyForm" >
+
       <label for="Check-in">Check in</label> <input id="Check-in" type="date" formControlName="checkIn">
       <label for="Check-out">Check out</label> <input id="Check-out" type="date" formControlName="checkOut">
-      <label for="Guests">Guests</label> <input id="Guests" type="number" formControlName="adults">
-     <button type="submit" class="primary">Reserve Now</button>
-        
+      <label for="Guests">Guests</label> <input id="Guests" type="number" formControlName="Guests">
+     <button type="submit" class="primary" (click)="submitApplication()">Reserve Now</button>
       </form>
      
     </section>
+
+    <footer>
+  <br><br><br><br><br>
+</footer>
+
     </article>
 
 `,
@@ -64,30 +72,32 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 
   export class DetailsComponent {
-    route: ActivatedRoute = inject(ActivatedRoute);
+  route: ActivatedRoute = inject(ActivatedRoute);
   housingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
+  totalCost: number | undefined;
 
-  constructor() {
+  constructor(private router: Router) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
   }
   
   applyForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    email: new FormControl('')
+    checkIn: new FormControl(''),
+    checkOut: new FormControl(''),
+    Guests: new FormControl('')
   });
   
   submitApplication() {
-    this.housingService.submitApplication(
-      this.applyForm.value.firstName ?? '',
-      this.applyForm.value.lastName ?? '',
-      this.applyForm.value.email ?? ''
-    );
-  }
+    this.totalCost = this.housingService.calculateTotalCost(this.applyForm, this.housingLocation?.id || -1);
+    this.housingService.submitApplication(this.applyForm);
 
-    }
+    // Navigate to the checkout component with totalCost as a query parameter
+    this.router.navigate(['/checkout'], { queryParams: { totalCost: this.totalCost } });
+  }
+}
+
+    
 
 
 

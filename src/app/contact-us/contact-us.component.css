@@ -1,0 +1,60 @@
+
+
+.head p{
+    font-size: 20px;
+}
+
+.top{
+    text-align: center;
+    padding: 15px;
+    border-radius: 30px;
+    background: hsl(0, 0%, 96%);
+}
+h1 {
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+  
+}
+h3{
+    font-size: 25px;
+}
+.top p {
+    font-size: 20px;
+    text-align:center;
+  
+}
+.bar{
+    display: inline;
+    margin: 60px;
+}
+.uno{ 
+    text-align: center; 
+    background: hsl(0, 0%, 96%);
+    border: 15px solid rgb(253, 253, 253);
+    width: 40%;
+    padding: 20px;
+    margin: 20px;
+   border-radius: 15px;
+
+}
+.dos{ 
+    text-align: center;
+    background: hsl(0, 0%, 96%);
+    border: 15px solid rgb(253, 253, 253);
+    padding: 20px;
+    width: 40%;
+    margin: 0 auto;
+   border-radius: 15px;
+}
+.tres{ 
+    text-align: center;
+    background: hsl(0, 0%, 96%);
+    border: 15px solid rgb(253, 253, 253);
+    width: 40%;
+    padding: 20px;
+    margin: 20px;
+   border-radius: 15px;
+   float: right;
+}
+
+

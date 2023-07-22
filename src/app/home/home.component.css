@@ -25,6 +25,10 @@
     border-radius: 30px;
     width: 100px;
   }
+
+  button:hover {
+    background-color: rgb(64, 109, 109);
+  }
   
   @media (min-width: 500px) and (max-width: 768px) {
     .results {

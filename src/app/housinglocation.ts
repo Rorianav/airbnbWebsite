@@ -3,6 +3,8 @@ export interface HousingLocation {
     name: string;
     city: string;
     state: string;
+    price: string;
+    value: number;
     description: string;
     photo: string;
     availableUnits: number;
