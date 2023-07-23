@@ -1,5 +1,7 @@
 
-
+head{
+    margin: 50px;
+}
 .head p{
     color: darkslategrey;
     font-size: 20px;

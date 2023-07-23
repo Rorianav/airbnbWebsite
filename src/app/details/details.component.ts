@@ -98,7 +98,7 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
 
     this.totalCost = this.housingService.calculateTotalCost(this.applyForm, this.housingLocation?.id || -1);
     this.housingService.submitApplication(this.applyForm);
-
+   
     // Navigate to the checkout component with totalCost as a query parameter
     this.router.navigate(['/checkout'], { queryParams: { totalCost: this.totalCost, housingLocation : this.encodeLocation(this.housingLocation)  } });
   }

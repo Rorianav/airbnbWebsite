@@ -7,9 +7,9 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   template: `
    <body>
-    <section class="head" >
 
-    <div class="top">
+    <section class="head" >
+     <div class="top">
         <h1>Contact Us</h1>
         <p>How can we help?</p>
     </div>

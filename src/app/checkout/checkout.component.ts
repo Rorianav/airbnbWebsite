@@ -11,6 +11,7 @@ import { HousingLocation } from '../housinglocation';
   imports: [CommonModule],
   template: `
   
+  <div class="flex-container">
   <div class="container">
     <h3>Personal Information</h3>
     <form>
@@ -44,6 +45,7 @@ import { HousingLocation } from '../housinglocation';
       <p>Total Cost: {{ totalCost | currency }}</p>
 
     </div>
+  </div>
 
   `,
   styleUrls: ['./checkout.component.css']
