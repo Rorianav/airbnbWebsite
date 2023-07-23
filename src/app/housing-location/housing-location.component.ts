@@ -13,7 +13,9 @@ import { RouterModule } from '@angular/router';
     <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
     <h2 class="listing-heading">{{ housingLocation.name }}</h2>
     <p class="listing-location" > <i class="fa-solid fa-location-dot"></i>{{ housingLocation.city}}, {{housingLocation.state }} </p>
-    <a [routerLink]="['/details', housingLocation.id]"> <i class="fa-solid fa-magnifying-glass"></i>Learn More</a> 
+    <a [routerLink]="['/details', housingLocation.id]" [queryParams]="{ location: encodeLocation(housingLocation) }"> <i class="fa-solid fa-magnifying-glass">
+
+    </i>Learn More</a> 
   </section>
 `,
 
@@ -21,5 +23,11 @@ import { RouterModule } from '@angular/router';
 })
 export class HousingLocationComponent {
   @Input() housingLocation!: HousingLocation;
+
+
+  encodeLocation(location: any): string {
+    // Convert the object to a string using JSON.stringify
+    return JSON.stringify(location);
+  }
 }
 

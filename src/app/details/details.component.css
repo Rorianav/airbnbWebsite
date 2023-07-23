@@ -6,6 +6,7 @@
     float: center;
    margin-left: 200px;
    padding: 10px;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.443);
     
   }
   .listing-apply{

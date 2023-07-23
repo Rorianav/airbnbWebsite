@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { HousingService } from '../housing.service';
+import { HousingLocation } from '../housinglocation';
 
 
 @Component({
@@ -30,16 +32,17 @@ import { ActivatedRoute } from '@angular/router';
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" required>
 
-      <button type="submit">Place Order</button>
+      <button type="submit" (click)="checkout()">Place Order</button>
     </form>
   </div>
 
   <div class="cart">
       <h2>Shopping Cart</h2>
-      <p>Total Nights:</p>
+      <img class="photo" [src]="this.housingLocation?.photo" >
+      <p>Name: {{this.housingLocation?.name}}</p>
+      <p>City: {{this.housingLocation?.city}}</p>
       <p>Total Cost: {{ totalCost | currency }}</p>
-      
-      
+
     </div>
 
   `,
@@ -48,6 +51,8 @@ import { ActivatedRoute } from '@angular/router';
 export class CheckoutComponent {
   
   totalCost: number | undefined;
+  housingLocation: HousingLocation | undefined;
+  housingService = inject(HousingService);
 
   constructor(private route: ActivatedRoute) {}
 
@@ -55,6 +60,14 @@ export class CheckoutComponent {
     // Retrieve the total cost from the query parameters
     this.route.queryParams.subscribe(params => {
       this.totalCost = Number(params['totalCost']);
+      const locationParam = this.route.snapshot.queryParams['housingLocation'];
+      this.housingLocation = JSON.parse(locationParam);
+      console.log(this.housingLocation);
     });
   }
+
+  checkout(){
+
+  }
 }
+

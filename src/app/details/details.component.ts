@@ -5,6 +5,7 @@ import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housinglocation';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HousingLocationComponent } from '../housing-location/housing-location.component';
 
 
 @Component({
@@ -76,9 +77,14 @@ import { Router } from '@angular/router';
   housingService = inject(HousingService);
   housingLocation: HousingLocation | undefined;
   totalCost: number | undefined;
+  nights :number=0;
+  param : any;
 
   constructor(private router: Router) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
+    this.param = this.route.snapshot.queryParams['location'];
+    this.housingLocation = JSON.parse(this.param);
+    console.log(this.housingLocation);
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
   }
   
@@ -89,12 +95,18 @@ import { Router } from '@angular/router';
   });
   
   submitApplication() {
+
     this.totalCost = this.housingService.calculateTotalCost(this.applyForm, this.housingLocation?.id || -1);
     this.housingService.submitApplication(this.applyForm);
 
     // Navigate to the checkout component with totalCost as a query parameter
-    this.router.navigate(['/checkout'], { queryParams: { totalCost: this.totalCost } });
+    this.router.navigate(['/checkout'], { queryParams: { totalCost: this.totalCost, housingLocation : this.encodeLocation(this.housingLocation)  } });
   }
+  encodeLocation(location: any): string {
+    // Convert the object to a string using JSON.stringify
+    return JSON.stringify(location);
+  }
+
 }
 
     

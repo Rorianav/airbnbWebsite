@@ -22,8 +22,8 @@ export class HousingService {
     console.log(`Homes reservation received: Check-In: ${form.value.checkIn}, Check-Out: ${form.value.checkOut}, Guests: ${form.value.Guests}.`);
   }
 
-  //getting the number of nights 
-  calculateNumberOfNights(checkInDate: Date, checkOutDate: Date): number {
+   //getting the number of nights 
+   calculateNumberOfNights(checkInDate: Date, checkOutDate: Date): number {
     console.log(checkInDate)
     console.log(checkOutDate)
       const timeDifference = new Date (checkOutDate).getTime() - new Date (checkInDate).getTime();
@@ -57,27 +57,10 @@ export class HousingService {
     }
 
   }
+ 
   
   housingLocationList: HousingLocation[] = [
-    {
-      id: 0,
-      name: 'Cottage with Pond Views',
-      city: 'Stroudsburg',
-      state: 'Pennsylvania',
-      price: '$100/night',
-      value: 100,
-      description: 'The Waters Edge cottage is a vacation rental located in Pennsylvanias mountains. It boasts 1 bedroom, 1.5 baths, and a covered porch that offers beautiful waterfront views.This rental provides an opportunity to escape from your daily routine and enjoy a relaxing stay.',
-      photo: '/assets/photo.jpeg',
-      availableUnits: 4,
-      wifi: true,
-      laundry: true,
-      kitchen: true,
-      tv: true,
-      patio: true,
-      parking: true,
-      pets: false,
-  
-    },
+   
     {
       id: 1,
       name: 'Gorgeous Lake Front Home',

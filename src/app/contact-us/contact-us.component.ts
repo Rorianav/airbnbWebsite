@@ -30,7 +30,8 @@ import { CommonModule } from '@angular/common';
 <div class="tres">
 <i class="fa-solid fa-location-dot" style="color: #00364a;"></i>
     <h3>Come See Us</h3>
-    <p></p>
+    <p>House Heores Company</p>
+    <p>100 54 Wall St, 12203</p>
 </div>
 
 

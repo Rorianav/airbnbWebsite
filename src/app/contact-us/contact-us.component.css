@@ -1,24 +1,29 @@
 
 
 .head p{
+    color: darkslategrey;
     font-size: 20px;
 }
 
 .top{
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     text-align: center;
     padding: 15px;
     border-radius: 30px;
-    background: hsl(0, 0%, 96%);
+    background: hsl(0, 0%, 100%);
 }
 h1 {
+    color: darkslategrey;
     font-size: 50px;
     font-family: Arial, Helvetica, sans-serif;
   
 }
 h3{
+    color: darkslategrey;
     font-size: 25px;
 }
 .top p {
+    color: darkslategrey;
     font-size: 20px;
     text-align:center;
   
@@ -29,18 +34,18 @@ h3{
 }
 .uno{ 
     text-align: center; 
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     background: hsl(0, 0%, 96%);
-    border: 15px solid rgb(253, 253, 253);
     width: 40%;
     padding: 20px;
     margin: 20px;
-   border-radius: 15px;
+    border-radius: 15px;
 
 }
 .dos{ 
     text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     background: hsl(0, 0%, 96%);
-    border: 15px solid rgb(253, 253, 253);
     padding: 20px;
     width: 40%;
     margin: 0 auto;
@@ -48,8 +53,8 @@ h3{
 }
 .tres{ 
     text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     background: hsl(0, 0%, 96%);
-    border: 15px solid rgb(253, 253, 253);
     width: 40%;
     padding: 20px;
     margin: 20px;
