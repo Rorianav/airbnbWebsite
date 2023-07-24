@@ -3,18 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { HousingLocation } from '../housinglocation';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'; // importing form control
 
 
 @Component({
   selector: 'app-checkout',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ReactiveFormsModule],
   template: `
   
   <div class="flex-container">
   <div class="container">
     <h3>Personal Information</h3>
-    <form>
+    
+    <form [formGroup]="infoForm" > 
+
       <label for="name">Name:</label>
       <input type="text" id="name" required>
 
@@ -25,10 +28,10 @@ import { HousingLocation } from '../housinglocation';
       <textarea id="address" required></textarea>
 
       <label for="cardNumber">Card Number:</label>
-      <input type="text" id="cardNumber" required>
+      <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000"required>
 
       <label for="expiryDate">Expiry Date:</label>
-      <input type="text" id="expiryDate" required>
+      <input type="text" id="expiryDate"  placeholder="mm/yy" required>
 
       <label for="cvv">CVV:</label>
       <input type="text" id="cvv" required>
@@ -68,8 +71,30 @@ export class CheckoutComponent {
     });
   }
 
-  checkout(){
+   //initializing the form adding the input id's
+   infoForm = new FormGroup({
+    name: new FormControl(''),
+    email: new FormControl(''),
+    address: new FormControl(''),
+    cardNumber: new FormControl(''),
+    expiryDate: new FormControl(''),
+    cvv: new FormControl('')
+  });
 
+
+  //windows confirmation
+  checkout() {
+
+    //input values saved when client clicks on "reserve now" button 
+    this.housingService.submitInfo(this.infoForm);
+    console.log(); 
+
+    const confirmationNumber = 'HH' + this.generateRandomNumber(100000, 999999);
+    window.alert(`Your Booking is confirmed. Your confirmation number is #${confirmationNumber}`);
+  }
+
+  generateRandomNumber(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 }
 

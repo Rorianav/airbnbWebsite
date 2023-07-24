@@ -18,9 +18,18 @@ export class HousingService {
     return this.housingLocationList.find(housingLocation => housingLocation.id === id);
   }
 
+  //function to save check in and checkout values
   submitApplication(form:FormGroup) {
     console.log(`Homes reservation received: Check-In: ${form.value.checkIn}, Check-Out: ${form.value.checkOut}, Guests: ${form.value.Guests}.`);
   }
+  
+  //function to save personal values
+  submitInfo(form:FormGroup) {
+    console.log(`Personal information received: Name: ${form.value.name}, Email: ${form.value.email}, Address: ${form.value.address}, 
+      CardNumber : ${form.value.cardNumber}, ExpiryDate: ${form.value.expiryDate}, CVV: ${form.value.cvv}, )
+    `);
+  }
+
 
    //getting the number of nights 
    calculateNumberOfNights(checkInDate: Date, checkOutDate: Date): number {
@@ -59,6 +68,7 @@ export class HousingService {
   }
  
   
+  //Home features
   housingLocationList: HousingLocation[] = [
    
     {
