@@ -84,20 +84,22 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.param = this.route.snapshot.queryParams['location'];
     this.housingLocation = JSON.parse(this.param);
-    console.log(this.housingLocation);
     this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
   }
   
+  //initializing the form
   applyForm = new FormGroup({
     checkIn: new FormControl(''),
     checkOut: new FormControl(''),
     Guests: new FormControl('')
   });
+
   
   submitApplication() {
 
     this.totalCost = this.housingService.calculateTotalCost(this.applyForm, this.housingLocation?.id || -1);
     this.housingService.submitApplication(this.applyForm);
+     console.log(this.applyForm);
    
     // Navigate to the checkout component with totalCost as a query parameter
     this.router.navigate(['/checkout'], { queryParams: { totalCost: this.totalCost, housingLocation : this.encodeLocation(this.housingLocation)  } });
