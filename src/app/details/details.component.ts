@@ -54,8 +54,8 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
       
     <form [formGroup]="applyForm" >
 
-      <label for="Check-in">Check in</label> <input id="Check-in" type="date" formControlName="checkIn">
-      <label for="Check-out">Check out</label> <input id="Check-out" type="date" formControlName="checkOut">
+      <label for="Check-in">Check in</label> <input id="Check-in" type="date" min= {{todayDate()}} formControlName="checkIn">
+      <label for="Check-out">Check out</label> <input id="Check-out" type="date" min= {{todayDate()}} formControlName="checkOut">
       <label for="Guests">Guests</label> <input id="Guests" type="number" formControlName="Guests">
      <button type="submit" class="primary" (click)="submitApplication()">Reserve Now</button>
       </form>
@@ -107,6 +107,15 @@ import { HousingLocationComponent } from '../housing-location/housing-location.c
   encodeLocation(location: any): string {
     // Convert the object to a string using JSON.stringify
     return JSON.stringify(location);
+  }
+
+  //function to accepts inputs minimum from today
+  todayDate(){
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
 }

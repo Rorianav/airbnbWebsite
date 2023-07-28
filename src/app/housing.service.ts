@@ -9,6 +9,8 @@ import { FormGroup } from '@angular/forms';
 
 
 export class HousingService { 
+
+  
   
   getAllHousingLocations(): HousingLocation[] {
     return this.housingLocationList;
@@ -25,9 +27,7 @@ export class HousingService {
   
   //function to save personal values
   submitInfo(form:FormGroup) {
-    console.log(`Personal information received: Name: ${form.value.name}, Email: ${form.value.email}, Address: ${form.value.address}, 
-      CardNumber : ${form.value.cardNumber}, ExpiryDate: ${form.value.expiryDate}, CVV: ${form.value.cvv}, )
-    `);
+    console.log(`Personal information received: Name: ${form.value.name}, Email: ${form.value.email}, Address: ${form.value.address}, CardNumber : ${form.value.cardNumber}, ExpiryDate: ${form.value.expiryDate}, CVV: ${form.value.cvv}`);
   }
 
 
@@ -66,7 +66,7 @@ export class HousingService {
     }
 
   }
- 
+
   
   //Home features
   housingLocationList: HousingLocation[] = [

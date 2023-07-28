@@ -15,26 +15,26 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'; //
   <div class="flex-container">
   <div class="container">
     <h3>Personal Information</h3>
-    
+
     <form [formGroup]="infoForm" > 
 
       <label for="name">Name:</label>
-      <input type="text" id="name" required>
+      <input type="text" id="name" formControlName="name" required>
 
       <label for="email">Email:</label>
-      <input type="email" id="email" required>
+      <input type="email" id="email" formControlName="email" required>
 
       <label for="address">Address:</label>
-      <textarea id="address" required></textarea>
+      <textarea id="address" formControlName="address" required></textarea>
 
       <label for="cardNumber">Card Number:</label>
-      <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000"required>
+      <input type="text" id="cardNumber" formControlName="cardNumber" placeholder="0000 0000 0000 0000"required>
 
       <label for="expiryDate">Expiry Date:</label>
-      <input type="text" id="expiryDate"  placeholder="mm/yy" required>
+      <input type="text" id="expiryDate"  formControlName="expiryDate" placeholder="mm/yy" required>
 
       <label for="cvv">CVV:</label>
-      <input type="text" id="cvv" required>
+      <input type="text" id="cvv" formControlName="cvv" required>
 
       <button type="submit" (click)="checkout()">Place Order</button>
     </form>
@@ -46,7 +46,6 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms'; //
       <p>Name: {{this.housingLocation?.name}}</p>
       <p>City: {{this.housingLocation?.city}}</p>
       <p>Total Cost: {{ totalCost | currency }}</p>
-
     </div>
   </div>
 
@@ -81,16 +80,15 @@ export class CheckoutComponent {
     cvv: new FormControl('')
   });
 
-
   //windows confirmation
   checkout() {
 
-    //input values saved when client clicks on "reserve now" button 
+    // values saved when client clicks on "reserve now" button 
     this.housingService.submitInfo(this.infoForm);
     console.log(); 
 
     const confirmationNumber = 'HH' + this.generateRandomNumber(100000, 999999);
-    window.alert(`Your Booking is confirmed. Your confirmation number is #${confirmationNumber}`);
+    window.alert(`Your Booking is confirmed ${this.infoForm.value.name}. Your confirmation number is #${confirmationNumber}`);
   }
 
   generateRandomNumber(min: number, max: number): number {
